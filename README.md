@@ -1,29 +1,65 @@
-Информация о датасете здесь: https://paperswithcode.com/dataset/vulnerability-java-dataset
+# Vulnerability Java Dataset - SVACE Analysis Guide
 
-он использовался для fine-tuning llm вот здесь https://arxiv.org/pdf/2401.17010v5
+This project contains Java code snippets with known vulnerabilities for testing SVACE SAST analysis.
 
-(на стр.7 написано, как он собирался и из чего состоит) скачать можно здесь: https://github.com/rmusab/vul-llm-finetune/tree/main/Datasets/without_p3
+## Project Structure
 
-Датасет для файнтьюнинга LLM собран из трёх источников:
+- `testcases1/` - First set of vulnerability examples (1-999)
+- `testcases2/` - Second set of vulnerability examples (1000-1098)
+- `src/main/java/com/` - Main application code
+- `pom.xml` - Maven build configuration
 
-CVEfixes – автоматически собранные данные об уязвимостях и их исправлениях (возможны ошибки).
+## Running with SVACE
 
-Manually-Curated Dataset – ручной сбор данных по уязвимостям в Java (более надежный).
+### Prerequisites
+- Java 8 or higher
+- Maven 3.6+
+- SVACE analyzer
 
-VCMatch – содержит только fix-коммиты для 10 популярных репозиториев.
+### Build Steps
 
-Процесс разметки: Выделение функций из коммитов, исправляющих уязвимости:
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd vul_java_dataset
+   ```
 
-До изменения (pre-change) → уязвимые (Vulnerable, P1).
+2. **Build the project:**
+   ```bash
+   ./build.sh
+   # or manually:
+   mvn clean compile test
+   ```
 
-После изменения (post-change) → неуязвимые (Non-vulnerable, P2).
+3. **Run SVACE analysis:**
+   ```bash
+   svace analyze --config svace-config.xml
+   ```
 
-Неизмененные функции в файлах с патчами → неуязвимые (Easy negatives, P3).
+### SVACE Analysis
 
-Включены только коммиты, где изменена одна функция (датасет X1).
+SVACE will automatically detect all CWE categories present in the vulnerability examples, including:
 
-Итоговые датасеты:
+- CWE-78: OS Command Injection
+- CWE-89: SQL Injection
+- CWE-611: XML External Entity (XXE)
+- CWE-22: Path Traversal
+- CWE-502: Deserialization of Untrusted Data
+- CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+- And many more...
 
-X1 без P3: 1334(1:1 баланс уязвимых/неуязвимых). https://github.com/rmusab/vul-llm-finetune/blob/main/Datasets/without_p3/java_k_1_strict_2023_07_03.tar.gz
+### Analysis Coverage
 
-X1 с P3: 22945 (1:34 баланс, большинство – P3) https://github.com/rmusab/vul-llm-finetune/blob/main/Datasets/with_p3/java_k_1_strict_2023_06_30.tar.gz
+SVACE will analyze:
+- Static code patterns during compilation
+- Runtime behavior during test execution
+- All vulnerability types automatically
+- Comprehensive CWE detection
+
+## Notes for SVACE Users
+
+- The project uses Maven for dependency management
+- All vulnerability examples are in the testcases directories
+- SVACE automatically detects all CWE categories - no manual configuration needed
+- Build artifacts are in `target/` directory
+- The test suite executes all vulnerability examples for comprehensive analysis
