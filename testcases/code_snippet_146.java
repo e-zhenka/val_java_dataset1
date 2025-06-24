@@ -1,0 +1,56 @@
+@BeforeClass
+  public static void setupClass() {
+    functionStringMap.put(new AlterRuntimeConfigFunction(), "CLUSTER:WRITE");
+    functionStringMap.put(new ChangeLogLevelFunction(), "CLUSTER:WRITE");
+    functionStringMap.put(new CloseDurableClientFunction(), "CLUSTER:MANAGE:QUERY");
+    functionStringMap.put(new CloseDurableCqFunction(), "CLUSTER:MANAGE:QUERY");
+    functionStringMap.put(new ContinuousQueryFunction(), "CLUSTER:READ");
+    functionStringMap.put(new CreateAsyncEventQueueFunction(), "CLUSTER:MANAGE:DEPLOY");
+    functionStringMap.put(new CreateDefinedIndexesFunction(), "CLUSTER:MANAGE:QUERY");
+    functionStringMap.put(new CreateDiskStoreFunction(), "CLUSTER:MANAGE:DISK");
+    functionStringMap.put(new CreateIndexFunction(), "CLUSTER:MANAGE:QUERY");
+    functionStringMap.put(new DataCommandFunction(), "DATA");
+    functionStringMap.put(new DeployFunction(), "CLUSTER:MANAGE:DEPLOY");
+    functionStringMap.put(new DescribeDiskStoreFunction(), "CLUSTER:READ");
+    functionStringMap.put(new DestroyAsyncEventQueueFunction(), "CLUSTER:MANAGE");
+    functionStringMap.put(new DestroyDiskStoreFunction(), "CLUSTER:MANAGE:DISK");
+    functionStringMap.put(new DestroyIndexFunction(), "CLUSTER:MANAGE:QUERY");
+    functionStringMap.put(new ExportConfigFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ExportDataFunction(), "DATA:READ");
+    functionStringMap.put(new ExportLogsFunction(), "CLUSTER:READ");
+    functionStringMap.put(new FetchRegionAttributesFunction(), "CLUSTER:READ");
+    functionStringMap.put(new FetchSharedConfigurationStatusFunction(), "CLUSTER:READ");
+    functionStringMap.put(new GarbageCollectionFunction(), "CLUSTER:MANAGE");
+    functionStringMap.put(new GatewayReceiverCreateFunction(), "CLUSTER:MANAGE:GATEWAY");
+    functionStringMap.put(new GatewaySenderCreateFunction(), "CLUSTER:MANAGE:GATEWAY");
+    functionStringMap.put(new GatewaySenderDestroyFunction(), "CLUSTER:MANAGE:GATEWAY");
+    functionStringMap.put(new GetClusterConfigurationFunction(), "*");
+    functionStringMap.put(new GetMemberConfigInformationFunction(), "CLUSTER:READ");
+    functionStringMap.put(new GetMemberInformationFunction(), "CLUSTER:READ");
+    functionStringMap.put(new GetRegionDescriptionFunction(), "CLUSTER:READ");
+    functionStringMap.put(new GetRegionsFunction(), "CLUSTER:READ");
+    functionStringMap.put(new GetStackTracesFunction(), "CLUSTER:READ");
+    functionStringMap.put(new GetSubscriptionQueueSizeFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ImportDataFunction(), "DATA:WRITE");
+    functionStringMap.put(new ListAsyncEventQueuesFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ListDeployedFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ListDiskStoresFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ListDurableCqNamesFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ListFunctionFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ListIndexFunction(), "CLUSTER:READ:QUERY");
+    functionStringMap.put(new NetstatFunction(), "CLUSTER:READ");
+    functionStringMap.put(new RebalanceFunction(), "DATA:MANAGE");
+    functionStringMap.put(new RegionAlterFunction(), "DATA:MANAGE");
+    functionStringMap.put(new RegionCreateFunction(), "DATA:MANAGE");
+    functionStringMap.put(new RegionDestroyFunction(), "DATA:MANAGE");
+    functionStringMap.put(new ShowMissingDiskStoresFunction(), "CLUSTER:READ");
+    functionStringMap.put(new ShutDownFunction(), "CLUSTER:MANAGE");
+    functionStringMap.put(new SizeExportLogsFunction(), "CLUSTER:READ");
+    functionStringMap.put(new UndeployFunction(), "CLUSTER:MANAGE:DEPLOY");
+    functionStringMap.put(new UnregisterFunction(), "CLUSTER:MANAGE:DEPLOY");
+    functionStringMap.put(new GetRegionNamesFunction(), "CLUSTER:READ");
+    functionStringMap.put(new RecreateCacheFunction(), "CLUSTER:MANAGE");
+    functionStringMap.put(new DownloadJarFunction(), "CLUSTER:READ");
+
+    functionStringMap.keySet().forEach(FunctionService::registerFunction);
+  }

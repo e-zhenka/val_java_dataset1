@@ -1,0 +1,56 @@
+@BeforeClass
+  public static void setupClass() {
+    functionStringMap.put(new AlterRuntimeConfigFunction(), "*");
+    functionStringMap.put(new ChangeLogLevelFunction(), "*");
+    functionStringMap.put(new CloseDurableClientFunction(), "*");
+    functionStringMap.put(new CloseDurableCqFunction(), "*");
+    functionStringMap.put(new ContinuousQueryFunction(), "*");
+    functionStringMap.put(new CreateAsyncEventQueueFunction(), "*");
+    functionStringMap.put(new CreateDefinedIndexesFunction(), "*");
+    functionStringMap.put(new CreateDiskStoreFunction(), "*");
+    functionStringMap.put(new CreateIndexFunction(), "*");
+    functionStringMap.put(new DataCommandFunction(), "*");
+    functionStringMap.put(new DeployFunction(), "*");
+    functionStringMap.put(new DescribeDiskStoreFunction(), "*");
+    functionStringMap.put(new DestroyAsyncEventQueueFunction(), "*");
+    functionStringMap.put(new DestroyDiskStoreFunction(), "*");
+    functionStringMap.put(new DestroyIndexFunction(), "*");
+    functionStringMap.put(new ExportConfigFunction(), "*");
+    functionStringMap.put(new ExportDataFunction(), "*");
+    functionStringMap.put(new ExportLogsFunction(), "*");
+    functionStringMap.put(new FetchRegionAttributesFunction(), "*");
+    functionStringMap.put(new FetchSharedConfigurationStatusFunction(), "*");
+    functionStringMap.put(new GarbageCollectionFunction(), "*");
+    functionStringMap.put(new GatewayReceiverCreateFunction(), "*");
+    functionStringMap.put(new GatewaySenderCreateFunction(), "*");
+    functionStringMap.put(new GatewaySenderDestroyFunction(), "*");
+    functionStringMap.put(new GetClusterConfigurationFunction(), "*");
+    functionStringMap.put(new GetMemberConfigInformationFunction(), "*");
+    functionStringMap.put(new GetMemberInformationFunction(), "*");
+    functionStringMap.put(new GetRegionDescriptionFunction(), "*");
+    functionStringMap.put(new GetRegionsFunction(), "*");
+    functionStringMap.put(new GetStackTracesFunction(), "*");
+    functionStringMap.put(new GetSubscriptionQueueSizeFunction(), "*");
+    functionStringMap.put(new ImportDataFunction(), "*");
+    functionStringMap.put(new ListAsyncEventQueuesFunction(), "*");
+    functionStringMap.put(new ListDeployedFunction(), "*");
+    functionStringMap.put(new ListDiskStoresFunction(), "*");
+    functionStringMap.put(new ListDurableCqNamesFunction(), "*");
+    functionStringMap.put(new ListFunctionFunction(), "*");
+    functionStringMap.put(new ListIndexFunction(), "*");
+    functionStringMap.put(new NetstatFunction(), "*");
+    functionStringMap.put(new RebalanceFunction(), "*");
+    functionStringMap.put(new RegionAlterFunction(), "*");
+    functionStringMap.put(new RegionCreateFunction(), "*");
+    functionStringMap.put(new RegionDestroyFunction(), "*");
+    functionStringMap.put(new ShowMissingDiskStoresFunction(), "*");
+    functionStringMap.put(new ShutDownFunction(), "*");
+    functionStringMap.put(new SizeExportLogsFunction(), "*");
+    functionStringMap.put(new UndeployFunction(), "*");
+    functionStringMap.put(new UnregisterFunction(), "*");
+    functionStringMap.put(new GetRegionNamesFunction(), "*");
+    functionStringMap.put(new RecreateCacheFunction(), "*");
+    functionStringMap.put(new DownloadJarFunction(), "*");
+
+    functionStringMap.keySet().forEach(FunctionService::registerFunction);
+  }
